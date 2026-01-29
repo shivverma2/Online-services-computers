@@ -30,7 +30,10 @@ body{
   color:#0f172a;
 }
 
+/* Header + decorative tech background images */
 header{
+  position:relative; /* needed for absolutely positioned decorative images */
+  overflow:hidden;
   background:radial-gradient(1200px 500px at 10% -10%, #60a5fa 0%, transparent 40%),
              linear-gradient(135deg,#1e3a8a,#2563eb);
   color:#fff;
@@ -39,6 +42,20 @@ header{
 }
 header h1{font-size:42px;margin:0 0 6px;font-weight:700}
 header p{margin:6px 0 0;font-size:18px}
+
+/* decorative tech images (low opacity, non-interactive) */
+.bg-tech{
+  position:absolute;
+  width:420px;
+  max-width:44%;
+  opacity:0.06;
+  filter:grayscale(1) blur(.2px);
+  pointer-events:none;
+  user-select:none;
+  transform-origin:center;
+}
+.bg-tech.left{left:-80px;top:-40px;transform:rotate(-12deg) scale(1.05)}
+.bg-tech.right{right:-80px;bottom:-20px;transform:rotate(10deg) scale(1)}
 
 .btn{
   display:inline-flex;align-items:center;gap:8px;
@@ -51,7 +68,7 @@ header p{margin:6px 0 0;font-size:18px}
 section{padding:64px 20px;max-width:1200px;margin:auto}
 h2{text-align:center;margin:0 0 44px;font-size:34px}
 
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}
+grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}
 .card{
   background:#fff;border-radius:18px;
   box-shadow:0 12px 30px rgba(15,23,42,.08);
@@ -65,11 +82,22 @@ footer{background:#0f172a;color:#cbd5f5;text-align:center;padding:28px 16px}
  position:fixed;bottom:20px;right:20px;background:#25D366;color:#fff;
  padding:16px 18px;border-radius:50%;font-size:22px;text-decoration:none
 }
+
+/* Responsive tweak: chhote screens par decorative images chhote kardo */
+@media (max-width:640px){
+  .bg-tech{width:260px;opacity:0.05}
+  header{padding:48px 16px 56px}
+  header h1{font-size:30px}
+}
   </style>
 </head>
 <body>
 
 <header>
+  <!-- Decorative technology images in the background (low opacity) -->
+  <img class="bg-tech left" src="https://cdn-icons-png.flaticon.com/512/2913/2913462.png" alt="" aria-hidden="true">
+  <img class="bg-tech right" src="https://cdn-icons-png.flaticon.com/512/2913/2913463.png" alt="" aria-hidden="true">
+
   <h1>Online Computer & Resume Service</h1>
   <p><strong>Web Developer & Tech Support</strong></p>
   <p>Fast • Affordable • Trusted Online Support</p>
@@ -81,17 +109,17 @@ footer{background:#0f172a;color:#cbd5f5;text-align:center;padding:28px 16px}
   <h2>Our Services</h2>
   <div class="grid">
     <div class="card">
-      <img src="https://cdn-icons-png.flaticon.com/512/906/906175.png">
+      <img src="https://cdn-icons-png.flaticon.com/512/906/906175.png" alt="">
       <h3>Online Computer Support</h3>
       <p>Windows, slow laptop, software, printer & email issues.</p>
     </div>
     <div class="card">
-      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135810.png">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135810.png" alt="">
       <h3>Resume Making</h3>
       <p>Professional resume for fresher & experienced.</p>
     </div>
     <div class="card">
-      <img src="https://cdn-icons-png.flaticon.com/512/942/942748.png">
+      <img src="https://cdn-icons-png.flaticon.com/512/942/942748.png" alt="">
       <h3>Job Profile Update</h3>
       <p>Naukri, Indeed & LinkedIn optimization.</p>
     </div>
