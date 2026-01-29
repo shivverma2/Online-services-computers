@@ -99,6 +99,129 @@ footer{background:var(--text);color:#cbd5f5;text-align:center;padding:28px 16px;
 </footer>
 
 <a class="wa-float" href="https://wa.me/919548006396?text=Hello%2C%20I%27m%20interested%20in%20your%20freelance%20services" target="_blank" aria-label="WhatsApp">🟢</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us</title>
+  <style>
+    body {
+      background-image: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+    }
 
+    .container {
+      margin-top: 300px;
+      max-width: 500px;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin: auto;
+
+    }
+    $grid-breakpoints: {
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+    };
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Send a Message</h2>
+    <form action="https://formsubmit.co/shivkumarsavita2@gmail.com" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_subject" value="New message from website!">
+
+      <input type="text" name="name" placeholder="Your Name" required>
+
+      <!-- Phone Number Field -->
+      <input type="tel" name="phone" placeholder="Your Phone Number" 
+             pattern="[0-9]{10}" maxlength="10" required>
+
+      <textarea name="message" placeholder="Your Message" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+
+</body>
+</html>
+<script>
+import java.util.Scanner; // import the Scanner class 
+
+class Main {
+  public static void main(String[] args) {
+    Scanner myObj = new Scanner(System.in);
+    String userName;
+
+    // Enter username and press Enter
+    System.out.println("Enter username"); 
+    userName = myObj.nextLine();   
+
+    System.out.println("Username is: " + userName);        
+  }
+}
+  import java.util.Scanner; // import the Scanner class 
+
+class Main {
+  public static void main(String[] args) {
+    Scanner myObj = new Scanner(System.in);
+    String userName;
+
+    // Enter username and press Enter
+    System.out.println("Enter username"); 
+    userName = myObj.nextLine();   
+
+    System.out.println("Username is: " + userName);        
+  }
+}
+</script>
 </body>
 </html>
