@@ -43,6 +43,41 @@
     a { color: inherit; }
     .container { width: min(1120px, calc(100% - 40px)); margin: auto; }
 
+    .topbar {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(15, 23, 42, 0.78); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav-wrap {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 18px; max-width: 1120px; margin: 0 auto; padding: 16px 20px;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 700;
+      letter-spacing: .5px;
+    }
+    .brand-mark {
+      width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--accent), #38bdf8); font-size: 1rem;
+      box-shadow: 0 8px 18px rgba(34,197,94,.35);
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 26px; list-style: none; margin: 0; padding: 0;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,.88); text-decoration: none; font-size: .96rem; font-weight: 500;
+      transition: color .25s ease;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      display: inline-flex; align-items: center; justify-content: center; padding: 11px 18px;
+      border-radius: 999px; background: linear-gradient(135deg, var(--accent), #34d399); color: #fff;
+      font-weight: 700; text-decoration: none; box-shadow: 0 12px 25px rgba(34,197,94,.25);
+    }
+    .menu-toggle {
+      display: none; border: 0; background: transparent; color: #fff; font-size: 1.6rem; cursor: pointer;
+    }
+
     #progress {
       position: fixed; inset: 0 auto auto 0; z-index: 1000;
       width: 0; height: 4px; background: linear-gradient(90deg, var(--accent), #38bdf8, var(--primary));
@@ -103,13 +138,45 @@
     @keyframes zoomIn { from { opacity: 0; transform: scale(.5); } to { opacity: 1; transform: scale(1); } }
     @keyframes float { 50% { transform: translateY(-18px) translateX(8px); } }
     @keyframes bounce { 50% { transform: translate(-50%, 10px); } }
+    @media (max-width: 760px) {
+      .menu-toggle { display: block; }
+      .nav-links {
+        position: absolute; top: 100%; left: 0; right: 0; flex-direction: column;
+        align-items: flex-start; background: rgba(15, 23, 42, 0.96); padding: 18px 20px 22px; border-bottom: 1px solid rgba(255,255,255,.08);
+        transform: translateY(-12px); opacity: 0; pointer-events: none; transition: .25s ease;
+      }
+      .nav-links.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+      .nav-cta { display: none; }
+    }
     @media (max-width: 600px) { .container { width: min(100% - 28px, 1120px); } section { padding: 60px 0; } .hero { padding: 70px 0; } h1 { letter-spacing: -1px; } .tools { right: 14px; } }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
   </style>
 </head>
 <body>
   <div id="progress"></div>
-  <header>
+
+  <nav class="topbar">
+    <div class="nav-wrap">
+      <div class="brand">
+        <span class="brand-mark">💻</span>
+        <span>Online Service</span>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">☰</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <a class="nav-cta" href="https://wa.me/919548006396?text=Hello%2C%20I%27m%20interested%20in%20your%20freelance%20services" target="_blank" rel="noopener">Book Now</a>
+    </div>
+  </nav>
+
+  <header id="home">
     <div class="container hero">
       <span class="badge">✨ Freelance Services Available</span>
       <h1>Online Computer & Resume Service</h1>
@@ -133,7 +200,7 @@
       </div>
     </section>
 
-    <section class="container reveal">
+    <section id="pricing" class="container reveal">
       <h2 class="section-title">Simple & Affordable Pricing</h2>
       <div class="grid">
         <article class="card"><h3>Fresher Resume</h3><p class="price">₹100</p></article>
@@ -143,7 +210,7 @@
       </div>
     </section>
 
-    <section class="container reveal">
+    <section id="about" class="container reveal">
       <h2 class="section-title">About Me</h2>
       <div class="card about"><p><strong>I am a Freelance Web Developer & Tech Support Professional.</strong></p><p>Providing affordable online computer support, resume services and profile optimization across India. Available for short-term freelance projects, remote troubleshooting and CV/design work.</p></div>
     </section>
@@ -188,6 +255,15 @@
       if (index <= text.length) setTimeout(typeText, 65);
     };
     typeText();
+
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('active'));
+    });
 
     const themeToggle = document.getElementById('themeToggle');
     const savedTheme = localStorage.getItem('theme');
